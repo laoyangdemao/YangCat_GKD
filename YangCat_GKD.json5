@@ -1,0 +1,76 @@
+{
+    id: 1,
+    name: "杨潇丹的GKD规则",
+    apps: [
+        {
+        //用于屏蔽ES文件浏览器开屏广告，配合GKD使用，参考自Adpro_gkd
+            id: "com.estrongs.android.pop",
+            name: "ES文件浏览器",
+            groups: [
+                {
+                key: 0,
+                name: "开屏广告-广告弹窗",
+                desc: "点击关闭",
+                fastQuery: true,
+                rules: [
+                    {
+                        key: 0,
+                        activityIds: [
+                            "com.estrongs.android.pop"
+                        ],
+                        matches: '[vid="ad_close"]',
+                    },
+                ],
+                enable: false,
+                },
+            ],
+        },
+        {
+        //用于屏蔽拷贝漫画广告，配合GKD使用，参考自Adpro_gkd
+            id: "com.copymanga.app",
+            name: "拷贝漫画",
+            groups: [
+                {
+                    key: 1,
+                    name: "开屏广告",
+                    desc: "点击关闭",
+                    fastQuery: true,
+                    rules: [
+                        {
+                            key: 0,
+                            matchRoot: true,
+                            activityIDs: [
+                                ".com.yifan.yf_ads.activity.YFSplashActivity"
+                            ],
+                            matches: '[text="跳过"]',
+                        },
+                    ],
+                },
+                {
+                    key: 2,
+                    name: "广告弹窗",
+                    desc: "点击关闭",
+                    fastQuery: true,
+                    rules: [
+                        {
+                            key: 0,
+                            matchRoot: true,
+                            activityIDs: [
+                                ".MainActivity"
+                            ],
+                            matches: '[vid="ad_close"]'
+                        },
+                        {
+                            key: 1,
+                            matchRoot: true,
+                            activityIDs: [
+                                ".com.baidu.mobads.sdk.api.MobRewardVideoActivity"
+                            ],
+                            excludeMatches: 'RelativeLayout + @ImageView <<(25,30) FrameLayout[id="android:id/content"]'
+                        },
+                    ],
+                },
+            ],
+        }
+    ]
+}
