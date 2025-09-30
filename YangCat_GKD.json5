@@ -1,7 +1,7 @@
 {
     id: 1,
     name: "杨潇丹的GKD规则",
-    version: 1.0,
+    version: 1,
     apps: [
         {
         //用于屏蔽ES文件浏览器开屏广告，配合GKD使用，参考自Adpro_gkd
